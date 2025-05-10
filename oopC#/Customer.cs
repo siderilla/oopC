@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace oopC_
 {
-    internal class Customer: Person
+    internal class Customer: Person //customer (nome classe figlio) : (eredita da) person (nome classe genitore)
     {
 
         public string Address { get; set; }
@@ -22,7 +22,7 @@ namespace oopC_
         //public Customer()
         //{
         //}
-        public Customer(string name, string surname, DateTime dob, string address, string mailAddress):base(name, surname, dob.Year, dob.Month, dob.Day)
+        public Customer(string name, string surname, DateTime dob, string address, string mailAddress): base(name, surname, dob.Year, dob.Month, dob.Day)
         {
             Address = address;
             MailAddress = mailAddress;
