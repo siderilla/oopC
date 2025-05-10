@@ -26,6 +26,6 @@ namespace oopC_
             return Name + " " + Surname;
         }
 
-        public abstract string Wellcome();
+        public abstract string Welcome();
     }
 }

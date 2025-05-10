@@ -31,14 +31,22 @@ namespace oopC_
             return NamePrefix + " " + base.ToString();
         }
 
-        public override string Wellcome()
+        public override string Welcome()
         {
-            return base.Wellcome() + " " + NamePrefix;
+            return base.Welcome() + " " + NamePrefix;
         }
 
         public override string PrintAddress()
         {
             return NamePrefix + " " + base.PrintAddress();
+        }
+
+        public bool LimitNegativeBalance(decimal newBalance)
+        {
+            Console.WriteLine($"[DEBUG] newBalance: {newBalance}, threshold: {NegativeThreshold}");
+            Console.WriteLine($"[DEBUG] Risultato del confronto: {newBalance >= NegativeThreshold}");
+
+            return newBalance >= NegativeThreshold;
         }
     }
 }

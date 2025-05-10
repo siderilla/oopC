@@ -23,7 +23,7 @@ namespace oopC_
             return "Impiegato" + " " +base.ToString();
         }
 
-        public override string Wellcome()
+        public override string Welcome()
         {
             return "Brutto stronzo, torna a lavorare!";
         }

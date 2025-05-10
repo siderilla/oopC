@@ -9,10 +9,10 @@ namespace oopC_
     internal class BankAccount
     {
 
-        public required string Id { get; set; } 
-        public required Customer Owner { get; set; }
-        public required Employee Creator { get; set; }
-        public required DateTime CreationDate { get; set; }
+        public string Id { get; set; } 
+        public Customer Owner { get; set; }
+        public Employee Creator { get; set; }
+        public DateTime CreationDate { get; set; }
         public decimal Balance { get; set; }
         public List<Transaction>? TransactionList { get; set; }
 
@@ -28,26 +28,42 @@ namespace oopC_
 
         public void Operate(decimal amount)
         {
+            decimal newBalance;
+            
             if (amount > 0)
             {
-                Balance = Balance + amount;
+                newBalance = Balance + amount;
+                Transaction newTransaction = new Transaction(amount, CreationDate);
+                TransactionList?.Add(newTransaction);
+                Balance = newBalance;
             }
             if (amount < 0)
             {
-                Balance = Balance + amount;
+                newBalance = Balance + amount;
+                if (newBalance < 0)
+                {
+                    if (Owner is VipCustomer customer)
+                    {
+                        if (customer.LimitNegativeBalance(newBalance))
+                        {
+                        Transaction newTransaction = new Transaction(amount, CreationDate);
+                        TransactionList?.Add(newTransaction);
+                        Balance = newBalance;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Insufficient balance ˙◠˙");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Insufficient balance ˙◠˙");
+                        return;
+                    }
+                }
             }
-        }
-
-        public bool IsVipCustomer()
-        {
-            if (Owner is VipCustomer)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+ 
         }
     }
 }

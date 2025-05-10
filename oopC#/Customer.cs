@@ -39,7 +39,7 @@ namespace oopC_
             return "Cliente" + " " + base.ToString(); ;
         }
 
-        public override string Wellcome()
+        public override string Welcome()
         {
             return "Benvenuto";
         }
