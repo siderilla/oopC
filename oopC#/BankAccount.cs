@@ -26,8 +26,9 @@ namespace oopC_
             TransactionList = new List<Transaction>();
         }
 
-        public void Operate(decimal amount)
+        public virtual void Operate(decimal amount)
         {
+            Console.WriteLine($"[DEBUG] amount: {amount}");
             decimal newBalance;
             
             if (amount > 0)
@@ -62,8 +63,40 @@ namespace oopC_
                         return;
                     }
                 }
+                else
+                {
+                    // se il saldo resta positivo, aggiorna normalmente
+                    Transaction newTransaction = new Transaction(amount, CreationDate);
+                    TransactionList?.Add(newTransaction);
+                    Balance = newBalance;
+                }
             }
  
         }
+
+        public override string ToString()
+        {
+            string info = $"Conto ID: {Id}\n" +
+                          $"Proprietario: {Owner}\n" +
+                          $"Creato da: {Creator}\n" +
+                          $"Data di creazione: {CreationDate.ToShortDateString()}\n" +
+                          $"Saldo attuale: {Balance}€\n" +
+                          $"Transazioni:\n";
+
+            if (TransactionList != null && TransactionList.Count > 0)
+            {
+                foreach (var transaction in TransactionList)
+                {
+                    info += $"- {transaction.CreationDate.ToShortDateString()} | {transaction.Amount}€\n";
+                }
+            }
+            else
+            {
+                info += "Nessuna transazione registrata.\n";
+            }
+
+            return info;
+        }
+
     }
 }

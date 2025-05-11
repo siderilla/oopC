@@ -71,5 +71,35 @@ internal class Program
         Console.WriteLine($"Saldo dopo prelievo -20000: {vipAccount.Balance}");
 
 
+        // Crea un cliente e un impiegato fittizi
+        var saver = new Customer("Saver", "Risparmioso", 1995, 6, 1, "Via dei Conti, 1", "saver@email.it");
+        var banker = new Employee("Banca", "Impiegato", 1980, 1, 1, "Filiale Centrale");
+
+        // Crea un conto SaveAccount con saldo iniziale 0
+        var saveAcc = new SaveAccount("SAV001", saver, banker, DateTime.Now, 0);
+
+        // Deposita 200 → dovrebbe risultare 204
+        saveAcc.Operate(200);
+        Console.WriteLine($"Saldo dopo deposito SaveAccount: {saveAcc.Balance}");  // Atteso: 204
+
+        // Preleva 100 → dovrebbe togliere 103 → saldo: 101
+        saveAcc.Operate(-100);
+        Console.WriteLine($"Saldo dopo prelievo SaveAccount: {saveAcc.Balance}");  // Atteso: 101
+
+        var cashbacker = new Customer("cashy", "backy", 1988, 4, 2, "via delle vie", "email@cashy.ui");
+        var cashAcc = new CashbackAccount("CASHB001", cashbacker, banker, DateTime.Now, 0);
+
+        cashAcc.Operate(200);
+        Console.WriteLine($"Saldo dopo deposito CASHBACK: {cashAcc.Balance}");  // Atteso: 200
+
+        cashAcc.Operate(-100);
+        Console.WriteLine($"Saldo dopo prelievo CASHBACK: {cashAcc.Balance}"); // 200 - 95 ? = 105?
+
+        Console.WriteLine("\n============== STAMPA CONTO RISPARMIO ==============");
+        Console.WriteLine(saveAcc);
+
+        Console.WriteLine("\n============== STAMPA CONTO CASHBACK ===============");
+        Console.WriteLine(cashAcc);
+
     }
 }
