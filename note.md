@@ -11,7 +11,7 @@ abstract ->	Nella classe madre	->	"Devi implementarlo nel figlio (obbligatorio)"
 
 ╔═══🔷 Classi e ereditarietà ═════════════════════════════╗
 ║ - Classe madre (base class): es. BankAccount           ║
-║ - Classe figlia (derived class): eredita tutto         ║
+║ - Classe figlia (derived class): eredita tutto         ║ 
 ║   └─ Esempio: class SaveAccount : BankAccount          ║
 ╚═════════════════════════════════════════════════════════╝
 
@@ -19,7 +19,7 @@ abstract ->	Nella classe madre	->	"Devi implementarlo nel figlio (obbligatorio)"
   ▸ base. → per accedere ai metodi della madre da dentro la figlia
 
 ╔═══🟢 Override e metodi virtuali ════════════════════════╗
-║ virtual   → nella madre, abilita override nei figli    ║
+║ virtual   → nella madre, abilita override nei figli    ║   s
 ║ override  → nella figlia, modifica un metodo virtuale  ║
 ╚═════════════════════════════════════════════════════════╝
 
