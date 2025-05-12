@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace oopC_
 {
-    internal class Transaction
+    internal class Transaction: IComparable<Transaction>
     {
         public decimal Amount { get; set; }
         public DateTime CreationDate { get; set; }
@@ -15,6 +15,12 @@ namespace oopC_
         {
             Amount = amount;
             CreationDate = creationdate;
+        }
+
+        public int CompareTo(Transaction? other)
+        {
+            if (other == null) return -1; // null is less than any object
+            return -Amount.CompareTo(other.Amount); // Sort by amount descending
         }
     }
 }

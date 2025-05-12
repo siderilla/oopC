@@ -85,3 +85,23 @@ abstract ->	Nella classe madre	->	"Devi implementarlo nel figlio (obbligatorio)"
 ║ - Dai nomi chiari alle variabili: newAmount, adjustedAmount, ecc. ║
 ║   per non perdere il senso del flusso                              ║
 ╚════════════════════════════════════════════════════════════════════╝
+
+
+
+interfaccia di c# come quella di typescript
+è come l'ereditarietà tra classi, ma funziona come una implementazione di funzioni e metodi
+è un modo per definire un contratto che le classi devono rispettare
+
+
+private -> accessibile solo nella classe
+protected -> accessibile nella classe e nelle classi figlie
+internal -> accessibile solo nello stesso assembly
+public -> accessibile ovunque
+protected internal -> accessibile nella classe, nelle classi figlie e nello stesso assembly
+
+
+═══════════════════════════════════════════════════════════════════
+
+mettere in ordine transaction sorting
+
+////////// missing semester

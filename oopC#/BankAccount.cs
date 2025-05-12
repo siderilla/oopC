@@ -21,7 +21,7 @@ namespace oopC_
             Id = id;
             Owner = owner;
             Creator = creator;
-            CreationDate = creationdate;
+            CreationDate = creationdate; //CreationDate = DateTime.Now; <-- alternativa senza il parametro
             Balance = balance;
             TransactionList = new List<Transaction>();
         }
@@ -74,6 +74,8 @@ namespace oopC_
  
         }
 
+
+
         public override string ToString()
         {
             string info = $"Conto ID: {Id}\n" +
@@ -85,7 +87,16 @@ namespace oopC_
 
             if (TransactionList != null && TransactionList.Count > 0)
             {
-                foreach (var transaction in TransactionList)
+                //// usare .Sort() invece di .OrderBy() richiede una List, perciò meglio fare una copia se serve:
+                //var sortedTransactions = new List<Transaction>(TransactionList);
+                //sortedTransactions.Sort((a, b) => a.Amount.CompareTo(b.Amount));
+                //foreach (var transaction in sortedTransactions)
+                //{
+                //    info += $"- {transaction.CreationDate.ToShortDateString()} | {transaction.Amount}€\n";
+                //}
+
+                // Order transactions by Amount before displaying
+                foreach (var transaction in TransactionList.OrderBy(t => t.Amount))
                 {
                     info += $"- {transaction.CreationDate.ToShortDateString()} | {transaction.Amount}€\n";
                 }

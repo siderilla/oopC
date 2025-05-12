@@ -1,4 +1,6 @@
-﻿using oopC_;
+﻿using System.Security.Principal;
+using System.Text;
+using oopC_;
 
 internal class Program
 {
@@ -12,7 +14,7 @@ internal class Program
 
 
         var c3 = new Customer("orazio", "de pippis", new DateTime(1999, 1, 1), "via vannucci 4, 16123 Genova, Italy", "orazio@topoliniaonline.it");
-        
+
         var c2 = new Customer("clarabella", "de pippis", 2001, 3, 23, "via vannucci 4, 16123 Genova, Italy", "claramoltobella@topoliniaonline.it");
 
         var v1 = new VipCustomer("topolino", "mouse", 1990, 1, 30, "via gramsci 4, 16123 Genova, Italy", "granbeltopo@topoliniaonline.it", -10000);
@@ -100,6 +102,26 @@ internal class Program
 
         Console.WriteLine("\n============== STAMPA CONTO CASHBACK ===============");
         Console.WriteLine(cashAcc);
+
+
+        Console.OutputEncoding = Encoding.Unicode; //così si vedono gli special chars via ToString() su console
+
+        BankAccount account = new BankAccount
+        (
+            id: "ACC001",
+            owner: c3,
+            creator: e1,
+            creationdate: DateTime.Now,
+            balance: 0
+        );
+
+        account.Operate(200m);   // Deposit
+        account.Operate(50m);   // Withdrawal
+        account.Operate(500m);   // Deposit
+        account.Operate(-100m);  // Withdrawal
+        account.Operate(20m);    // Deposit
+
+        account.ToString();
 
     }
 }
